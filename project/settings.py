@@ -1,30 +1,32 @@
 import os
 from environs import Env
 
-
 env = Env()
 env.read_env()
 
+
+
 DATABASES = {
     'default': {
-        'ENGINE': os.environ['DB_ENGINE'],
-        'HOST': os.environ['DB_HOST'],
-        'PORT': os.environ['DB_PORT'],
-        'NAME': os.environ['DB_NAME'],
-        'USER': os.environ['DB_USER'],
-        'PASSWORD': os.environ['DB_PASSWORD'],
+        'ENGINE': env('DATABASE_ENGINE'),
+        'HOST': env('DATABASE_HOST'),
+        'PORT': env('DATABASE_PORT'),
+        'NAME': env('DATABASE_NAME'),
+        'USER': env('DATABASE_USER'),
+        'PASSWORD': env('DATABASE_PASSWORD'),
     }
 }
 
 INSTALLED_APPS = ['datacenter']
 
-DEBUG = os.getenv("DEBUG", False)
+SECRET_KEY = env('DATABASE_SECRET_KEY', default='ANY_KEY')
 
-SECRET_KEY = os.environ['SECRET_KEY']
+DEBUG = env.bool('DEBUG', default=False)
 
 ROOT_URLCONF = 'project.urls'
 
-ALLOWED_HOSTS = os.getenv('localhost')
+ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', default=localhost)
+
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TEMPLATES = [
