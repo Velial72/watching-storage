@@ -9,12 +9,12 @@
 для подключения к базе данных нужно ввести данные самой базы в файле .env, в формате:
 
 ```python
-'ENGINE': '',
-'HOST': '',
-'PORT': '',
-'NAME': '',
-'USER': '',
-'PASSWORD': ''
+'ENGINE': 'paste_here_engine',
+'HOST': 'paste_here_host',
+'PORT': 'paste_here_port',
+'NAME': 'aste_here_host_name',
+'USER': 'paste_here_host_user',
+'PASSWORD': 'paste_here_host_password'
 ```
 Так же потребуется версия Django 3.2
 Python3 должен быть уже установлен.
